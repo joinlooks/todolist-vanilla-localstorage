@@ -37,15 +37,17 @@ const print = () => {
 };
 
 const addTodo = () => {
-  let ar =
-    localStorage.getItem("todo") != null
-      ? JSON.parse(localStorage.getItem("todo"))
-      : [];
-  ar.push(textarea.value);
-  localStorage.setItem("todo", JSON.stringify(ar));
-  textarea.value = "";
-  textarea.style.height = "30px";
-  print();
+  if (textarea.value !== null && textarea.value !== "") {
+    let ar =
+      localStorage.getItem("todo") != null
+        ? JSON.parse(localStorage.getItem("todo"))
+        : [];
+    ar.push(textarea.value);
+    localStorage.setItem("todo", JSON.stringify(ar));
+    textarea.value = "";
+    textarea.style.height = "30px";
+    print();
+  }
 };
 
 const delTodo = (index) => {
